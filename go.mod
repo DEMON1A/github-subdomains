@@ -1,4 +1,4 @@
-module github.com/gwen001/github-subdomains
+module github.com/DEMON1A/github-subdomains
 
 go 1.13
 
