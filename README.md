@@ -22,16 +22,24 @@ This Go tool performs searches on GitHub and parses the results to find subdomai
 
 ## Install
 
-```
-go install github.com/gwen001/github-subdomains@latest
+```bash
+go install github.com/DEMON1A/github-subdomains@latest
 ```
 
 or
 
-```
-git clone https://github.com/gwen001/github-subdomains
+```bash
+git clone https://github.com/DEMON1A/github-subdomains
 cd github-subdomains
 go install
+```
+
+## Update an existing github-subdomains binary
+```bash
+git clone https://github.com/DEMON1A/github-subdomains
+cd github-subdomains
+go build -o gs 
+mv gs $(whereis github-subdomains | cut -d ":" -f 2) # use sudo if required
 ```
 
 ## Usage
@@ -56,6 +64,8 @@ Usage of github-subdomains:
     	if the options is not provided, the environment variable GITHUB_TOKEN is readed, it can be:
     	  • a single token
     	  • a list of tokens separated by comma
+  -w int
+        time to wait for github api to respond ~ in seconds ~ (default 10)
 ```
 
 If you want to use multiple tokens, you better create a `.tokens` file in the executable directory with 1 token per line  
@@ -72,7 +82,7 @@ export GITHUB_TOKEN=token1,token2...
 Tokens are disabled when GitHub raises a rate limit alert, however they are re-enable 1mn later.
 You can disable that feature by using the option `-k`.
 
-<img src="https://github.com/gwen001/github-subdomains/raw/master/preview.png">
+<img src="https://github.com/DEMON1A/github-subdomains/raw/master/preview.png">
 
 ## Todo
 
@@ -80,6 +90,9 @@ You can disable that feature by using the option `-k`.
 - ?
 
 ## Changelog
+
+**02/12/2024**
+- add a custom flag `-w` for how long should gh wait for github's api
 
 **20/09/2022**
 - fix regexp for subdomains
